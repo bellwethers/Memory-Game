@@ -1,0 +1,124 @@
+/*CSS makes things pretty(size, and spacing)*/
+ img{
+     width: 100%;
+}
+ header{
+     text-align:center;
+}
+ td {
+     border: .5px solid black;
+     cursor: pointer;
+}
+ td .card{
+     display:block;
+     width:100%;
+     height:auto;
+}
+ #time{
+     margin-left: 9px;
+     margin-right: 2px;
+}
+ #moves{
+     margin-right: 2px;
+}
+ .game-box{
+     background-color: red;
+}
+ .score_panel{
+     display: flex;
+     flex-wrap: wrap;
+     margin: auto;
+}
+ .repeat{
+
+     width: 10%;
+     height: auto;
+     margin-left: 70px;
+}
+
+#repeat_img{
+  width: 100%;
+}
+
+.stars{
+  width: 100%;
+}
+#star-list{
+  list-style: none;
+  display: flex;
+}
+
+.star{
+  width: 60%;
+}
+
+ #cardCanvas{
+     width: 100%;
+}
+ .card{
+     filter:brightness(0%);
+}
+ .card.select{
+     filter:none;
+}
+ .card.matched{
+     filter:brightness(300%);
+}
+/*RESPONSIVE*/
+/* create a game box */
+ @media screen and (min-width: 751px) {
+     body {
+         margin: 30px;
+    }
+     table{
+         align-content: center;
+         border-spacing: 15px 1rem;
+    }
+     td {
+         width: 200px;
+         height: 150px;
+    }
+     .score_panel{
+         width: 30%;
+    }
+     .repeat{
+         cursor: pointer;
+    }
+     .game-box{
+         margin: auto;
+         width: 60%;
+         margin-top: 24px;
+    }
+     .card{
+         filter:brightness(0%);
+    }
+     .card.select{
+         filter:none;
+    }
+     .card.matched{
+         filter:brightness(300%);
+    }
+}
+/*RESPONSIVE*/
+ @media screen and (max-width: 750px) {
+     body{
+         margin: 0;
+    }
+     table{
+         align-content: center;
+         border-spacing: 8px 1rem;
+    }
+     td {
+         width: 150px;
+    }
+     .game-box{
+         margin-top: 24px;
+         margin: auto;
+    }
+     .score_panel{
+         width: 30%;
+    }
+     .card{
+         width:70%;
+    }
+}
