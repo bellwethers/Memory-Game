@@ -2,7 +2,7 @@
 var ogDeck = ["img/IMAG1159.jpg", "img/IMAG1162.jpg", "img/IMAG1166.jpg"];
 var cloneDeck = ogDeck.slice(0);
 var deck = ogDeck.concat(cloneDeck);
-new_deck = shuffle(deck);
+ shuffle(deck);
 
 
 
@@ -49,7 +49,7 @@ for (let r = 1; r <= 2; r++) {
         x++;
         //adds the image element to every column/ appendChild is for JS
         column.appendChild(img);
-      //  console.log("numbers of cells in rows :" + c);
+        //  console.log("numbers of cells in rows :" + c);
     }
 }
 
@@ -102,26 +102,26 @@ function listen(selected_card) {
 var stars = document.querySelectorAll('.star');
 var starCount = stars.length;
 
-function starStyle(){
-for(var w = 0; w < starCount; w++){
-  stars[w].style.filter = "none";
-}
+function starStyle() {
+    for (var w = 0; w < starCount; w++) {
+        stars[w].style.filter = "none";
+    }
 }
 
 var y = -1;
 
-function moveCount(){
-  turn++;
+function moveCount() {
+    turn++;
 
-  /*create a list of three stars then remove
-  if turns become too much remove
-  */
-  if(turn == 10 || turn == 17 || turn == 27){
-  y++;
-    
-    stars[y].style.filter = "brightness(0%)";
-    //change style to black
-  }
+    /*create a list of three stars then remove
+    if turns become too much remove
+    */
+    if (turn == 10 || turn == 17 || turn == 27) {
+        y++;
+
+        stars[y].style.filter = "brightness(0%)";
+        //change style to black
+    }
 }
 
 //handles matched card
@@ -158,43 +158,42 @@ function reset_guess() {
 
 
 
-
 function win_message() {
-if (matched.length == deck.length) {
-  var score = document.getElementById("moves").innerHTML = turn;
-    alert("You win!! Your score is: "+score+ "turns.");
-  }
+    if (matched.length == deck.length) {
+        var score = document.getElementById("moves").innerHTML = turn;
+        alert("You win!! Your score is: " + score + "turns.");
+    }
 }
 
 
 
 var refresh_button = document.getElementById("repeat_img");
-refresh_button.addEventListener('click',restart);
+refresh_button.addEventListener('click', restart);
 
 //restart game if button is pressed.
 function restart() {
-      turn = 0;
-      counter = 0;
-      y = -1;
-      starStyle();
-        var cards_picked = document.querySelectorAll(".matched");
-        cards_picked.forEach(card => {
-            card.classList.remove("matched");
-            matched.splice(0);
-          //  console.log("removed: " + matched.toString());
-        });
-        cards_img.forEach(function(click_card) {
-            click_card.addEventListener("click", listen);
-        });
+    turn = 0;
+    counter = 0;
+    y = -1;
+    starStyle();
+    var cards_picked = document.querySelectorAll(".matched");
+    cards_picked.forEach(card => {
+        card.classList.remove("matched");
+        matched.splice(0);
+        //  console.log("removed: " + matched.toString());
+    });
+    cards_img.forEach(function(click_card) {
+        click_card.addEventListener("click", listen);
+    });
 }
 
 setInterval(timer, 2000);
 var counter = 0;
 //timer
-function timer(){
-  if(turn != 0 && matched.length != deck.length){
-counter++;
-var time = document.getElementById("time").innerHTML = counter;
-//console.log("counter: "+counter);
-}
+function timer() {
+    if (turn !== 0 && matched.length != deck.length) {
+        counter++;
+        var time = document.getElementById("time").innerHTML = counter;
+        //console.log("counter: "+counter);
+    }
 }
