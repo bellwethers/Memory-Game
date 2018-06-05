@@ -59,6 +59,7 @@
      filter:brightness(0%);
 }
  .card.select{
+      animation: flip 0.5s;
       filter:none;
 }
  .card.matched{
@@ -70,7 +71,7 @@
 
   @keyframes flip {
     from { transform: rotateY(0deg); }
-    to { transform: rotateY(180deg); }
+    to { transform: rotateY(350deg); }
   }
 
 /*RESPONSIVE*/
