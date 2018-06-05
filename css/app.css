@@ -59,10 +59,11 @@
      filter:brightness(0%);
 }
  .card.select{
-     filter:none;
+      filter:none;
 }
  .card.matched{
-     filter:brightness(300%);
+    filter:none;
+
 }
 /*RESPONSIVE*/
 /* create a game box */
@@ -89,7 +90,7 @@
          width: 60%;
          margin-top: 24px;
     }
-  
+
 }
 /*RESPONSIVE*/
  @media screen and (max-width: 750px) {
