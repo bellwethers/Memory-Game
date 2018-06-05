@@ -149,10 +149,7 @@ function moveCount() {
 function matched_card() {
     //console.log("success");
     matched.push(firstClick, secondClick);
-    var cards_picked = document.querySelectorAll(".select");
-    cards_picked.forEach(card => {
-        card.classList.add("matched");
-    });
+      $( ".select" ).addClass( "matched" );
     setTimeout(win_message, 119);
 
 }
@@ -172,14 +169,14 @@ function reset_guess() {
     delay the removal or wrong anim */
     var cards_picked = document.querySelectorAll(".select");
     cards_picked.forEach(card => {
-        card.classList.remove("select");
         card.classList.add("wrong");
+        card.classList.remove("select");
         card.addEventListener("click", listen);
-
+        setTimeout(remove_anim, 2000);
     });
-    $( "select" ).removeClass( "wrong" );
-
-
+    function remove_anim(){
+      $( "td img" ).removeClass( "wrong" );
+    }
 }
 
 
@@ -206,12 +203,9 @@ function restart() {
     starOut = [];
     $("#cardCanvas tr").remove();
     createBoard();
-    var cards_picked = document.querySelectorAll(".matched");
-    cards_picked.forEach(card => {
-        card.classList.remove("matched");
-        matched.splice(0);
-        //  console.log("removed: " + matched.toString());
-    });
+    $("td img").removeClass(matched);
+    matched.splice(0);
+    //  console.log("removed: " + matched.toString());
 
 }
 
