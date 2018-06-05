@@ -1,11 +1,25 @@
 //list of src for images
-var ogDeck = ["img/IMAG1159.jpg", "img/IMAG1162.jpg", "img/IMAG1166.jpg"];
-var cloneDeck = ogDeck.slice(0);
-var deck = ogDeck.concat(cloneDeck);
- shuffle(deck);
+//DECK ARRAY//
+var srcList = ["img/IMAG1159.jpg", "img/IMAG1162.jpg", "img/IMAG1166.jpg"];
+var imgCopy = srcList.slice(0);
+var deck = srcList.concat(imgCopy);
+var newDeck = shuffle(deck);
 
+//CARD SELECTION SECTION//
+var firstClick = null;
+var secondClick = null;
+var matched = [];
+//selected cards//
+var selected_list = 0;
+var turn = 0;
 
+//STAR MANAGER//
+var stars = document.querySelectorAll('.star');
+var starCount = stars.length;
 
+createBoard();
+
+//SHUFFLE DECK//
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -20,55 +34,59 @@ function shuffle(array) {
 
     return array;
 }
+
+
+
+
 /*
 summary:
 A nested loop which creates card grid and every
 created cell appends an img element. Also itterates
 through img list
 */
+function createBoard() {
+    newDeck = shuffle(deck);
 
-//finds the cardCanvas
-const table = document.getElementById("cardCanvas");
-//the int for my list of imgs
-let x = 0;
-//nested loop
-/*foreach x row make x columns */
-for (let r = 1; r <= 2; r++) {
-    //<tr> == row //
-    const row = table.insertRow(0);
-    //console.log("numb of rows: " + r);
-    for (let c = 1; c <= 3; c++) {
-        //<td> == column //
-        var column = row.insertCell(0);
-        //create img element
-        const img = document.createElement("img");
-        img.className = "card";
-        //the image address is in the list
-        img.src = deck[x];
-        //moves through img lis
-        x++;
-        //adds the image element to every column/ appendChild is for JS
-        column.appendChild(img);
-        //  console.log("numbers of cells in rows :" + c);
+
+    //finds the cardCanvas
+    const table = document.getElementById("cardCanvas");
+    //the int for my list of imgs
+    let x = 0;
+    //nested loop
+    /*foreach x row make x columns */
+    for (let r = 1; r <= 2; r++) {
+        //<tr> == row //
+        const row = table.insertRow(0);
+        //console.log("numb of rows: " + r);
+        for (let c = 1; c <= 3; c++) {
+            //<td> == column //
+            var column = row.insertCell(0);
+            //create img element
+            const img = document.createElement("img");
+            img.className = "card";
+            //the image address is in the list
+            img.src = newDeck[x];
+            //console.log(deck[x]);
+            //moves through img lis
+            x++;
+            //adds the image element to every column/ appendChild is for JS
+            column.appendChild(img);
+            //  console.log("numbers of cells in rows :" + c);
+        }
     }
+
+
+
+
+    //CARD LISTENER SECTION//
+    var cards_img = document.querySelectorAll(".card");
+
+    cards_img.forEach(function(click_card) {
+        click_card.addEventListener("click", listen);
+    });
 }
 
-
-
-
-var cards_img = document.querySelectorAll(".card");
-var firstClick = null;
-var secondClick = null;
-var matched = [];
-var selected_list = 0;
-var turn = 0;
-
-
-
-cards_img.forEach(function(click_card) {
-    click_card.addEventListener("click", listen);
-});
-
+//CARD SELECTION SECTION//
 function listen(selected_card) {
 
     let clicked = selected_card.target;
@@ -94,14 +112,13 @@ function listen(selected_card) {
             }
             setTimeout(reset_guess, 1156);
 
-            //console.log("in list : " + matched.length);
+            console.log("in list : " + matched.length);
         }
     }
 }
 
-var stars = document.querySelectorAll('.star');
-var starCount = stars.length;
 
+//STAR MANAGER//
 function starStyle() {
     for (var w = 0; w < starCount; w++) {
         stars[w].style.filter = "none";
@@ -124,7 +141,7 @@ function moveCount() {
     }
 }
 
-//handles matched card
+//CARD MATCHES SECTION //
 function matched_card() {
     //console.log("success");
     matched.push(firstClick, secondClick);
@@ -139,7 +156,7 @@ function matched_card() {
 
 }
 
-//resets wrong guess
+//RESETS WRONG GUESSES//
 function reset_guess() {
     firstClick = null;
     secondClick = null;
@@ -157,7 +174,7 @@ function reset_guess() {
 
 
 
-
+//WIN MESSAGE//
 function win_message() {
     if (matched.length == deck.length) {
         var score = document.getElementById("moves").innerHTML = turn;
@@ -166,7 +183,7 @@ function win_message() {
 }
 
 
-
+//RESETS THE GAME(shuffles deck)//
 var refresh_button = document.getElementById("repeat_img");
 refresh_button.addEventListener('click', restart);
 
@@ -176,17 +193,19 @@ function restart() {
     counter = 0;
     y = -1;
     starStyle();
+    matched = [];
+    $("#cardCanvas tr").remove();
+    createBoard();
     var cards_picked = document.querySelectorAll(".matched");
     cards_picked.forEach(card => {
         card.classList.remove("matched");
         matched.splice(0);
         //  console.log("removed: " + matched.toString());
     });
-    cards_img.forEach(function(click_card) {
-        click_card.addEventListener("click", listen);
-    });
+
 }
 
+//COUNTER (starts on first card selection)//
 setInterval(timer, 2000);
 var counter = 0;
 //timer
