@@ -67,12 +67,17 @@
     cursor:default;
 }
   .card.wrong{
-    animation: flip 0.5s;
+    animation: squeeze 0.5s;
   }
 
   @keyframes flip {
     from { transform: rotateY(0deg); }
     to { transform: rotateY(350deg); }
+  }
+  @keyframes squeeze {
+  55% {
+    transform: translate(-1px, -8px) rotateY(45deg);
+    }
   }
 
 /*RESPONSIVE*/
