@@ -127,7 +127,7 @@ function starStyle() {
 }
 
 var y = -1;
-
+var starOut = [];
 function moveCount() {
     turn++;
 
@@ -139,6 +139,8 @@ function moveCount() {
 
         stars[y].style.filter = "brightness(0%)";
         //change style to black
+        starOut.push(y);
+        console.log(starOut.length);
     }
 }
 
@@ -179,7 +181,7 @@ function reset_guess() {
 function win_message() {
     if (matched.length == deck.length) {
         var score = document.getElementById("moves").innerHTML = turn;
-        alert("You win!! Your score is: " + score + " turns and you have lost " + y + " stars!");
+        alert("You win!! Your score is: " + score + " turns and you have lost " + starOut.length + " stars!");
     }
 }
 
@@ -195,6 +197,7 @@ function restart() {
     y = -1;
     starStyle();
     matched = [];
+    starOut = [];
     $("#cardCanvas tr").remove();
     createBoard();
     var cards_picked = document.querySelectorAll(".matched");
