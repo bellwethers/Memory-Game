@@ -89,15 +89,7 @@
          width: 60%;
          margin-top: 24px;
     }
-     .card{
-         filter:brightness(0%);
-    }
-     .card.select{
-         filter:none;
-    }
-     .card.matched{
-         filter:brightness(300%);
-    }
+  
 }
 /*RESPONSIVE*/
  @media screen and (max-width: 750px) {
