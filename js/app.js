@@ -179,7 +179,7 @@ function reset_guess() {
 function win_message() {
     if (matched.length == deck.length) {
         var score = document.getElementById("moves").innerHTML = turn;
-        alert("You win!! Your score is: " + score + "turns.");
+        alert("You win!! Your score is: " + score + " turns and you have lost " + y + " stars!");
     }
 }
 
