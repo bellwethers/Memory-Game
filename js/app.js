@@ -168,12 +168,16 @@ function reset_guess() {
       pair.classList.remove("select");
       pair.removeEventListener("click", listen);
     });
+    /*for every wrong pick add wrong anim remove selelect then
+    delay the removal or wrong anim */
     var cards_picked = document.querySelectorAll(".select");
     cards_picked.forEach(card => {
         card.classList.remove("select");
+        card.classList.add("wrong");
         card.addEventListener("click", listen);
-    });
 
+    });
+    $( "select" ).removeClass( "wrong" );
 
 
 }
