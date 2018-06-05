@@ -100,6 +100,7 @@ function listen(selected_card) {
         if (selected_list === 1) {
             firstClick = clicked.getAttribute("src");
             clicked.classList.add("select");
+            //so you cant click the same card
             clicked.removeEventListener("click", listen);
             //console.log("first: " + firstClick);
         } else {
@@ -151,10 +152,7 @@ function matched_card() {
     var cards_picked = document.querySelectorAll(".select");
     cards_picked.forEach(card => {
         card.classList.add("matched");
-        card.removeEventListener("click", listen);
     });
-    firstClick = null;
-    secondClick = null;
     setTimeout(win_message, 119);
 
 }
@@ -165,6 +163,11 @@ function reset_guess() {
     secondClick = null;
     selected_list = 0
     //console.log("reset");
+    var matching = document.querySelectorAll(".matched");
+    matching.forEach(pair => {
+      pair.classList.remove("select");
+      pair.removeEventListener("click", listen);
+    });
     var cards_picked = document.querySelectorAll(".select");
     cards_picked.forEach(card => {
         card.classList.remove("select");
