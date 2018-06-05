@@ -64,6 +64,7 @@
 }
  .card.matched{
     filter:none;
+    cursor:default;
 }
   .card.wrong{
     animation: flip 0.5s;
