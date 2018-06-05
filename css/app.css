@@ -63,8 +63,16 @@
 }
  .card.matched{
     filter:none;
-
 }
+  .card.wrong{
+    animation: flip 0.5s;
+  }
+
+  @keyframes flip {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(180deg); }
+  }
+
 /*RESPONSIVE*/
 /* create a game box */
  @media screen and (min-width: 751px) {
