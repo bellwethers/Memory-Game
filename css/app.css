@@ -75,9 +75,7 @@
     to { transform: rotateY(350deg); }
   }
   @keyframes squeeze {
-  55% {
-    transform: translate(-1px, -8px) rotateY(45deg);
-    }
+  55% { transform: translate(-1px, -8px) rotateY(45deg);}
   }
 
 /*RESPONSIVE*/
