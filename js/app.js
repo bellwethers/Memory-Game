@@ -180,8 +180,7 @@ function reset_guess() {
 //WIN MESSAGE//
 function win_message() {
     if (matched.length == deck.length) {
-        var score = document.getElementById("moves").innerHTML = turn;
-        alert("You win!! Your score is: " + score + " turns and you have lost " + starOut.length + " stars!");
+        alert("You win!! Your time score is: " + counter + " seconds and you have lost " + starOut.length + " stars!");
     }
 }
 
@@ -211,12 +210,15 @@ function restart() {
 
 //COUNTER (starts on first card selection)//
 setInterval(timer, 2000);
-var counter = 0;
 //timer
+var counter = 0;
+//finds time element
+var time = document.getElementById("time");
+
 function timer() {
     if (turn !== 0 && matched.length != deck.length) {
         counter++;
-        var time = document.getElementById("time").innerHTML = counter;
+        time.innerHTML = counter;
         //console.log("counter: "+counter);
     }
 }
