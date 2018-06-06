@@ -184,7 +184,7 @@ function reset_guess() {
 //WIN MESSAGE//
 function win_message() {
     if (matched.length == deck.length) {
-        alert("You win!! Your time score is: " + counter + " seconds and you have lost " + starOut.length + " stars!");
+        alert("You win!! Your time score is: " + counter + " seconds and you have lost " + starOut.length + " stars! Would you like to play again?");
     }
 }
 
@@ -197,6 +197,7 @@ refresh_button.addEventListener('click', restart);
 function restart() {
     turn = 0;
     counter = 0;
+    selected_list = 0
     y = -1;
     starStyle();
     matched = [];
