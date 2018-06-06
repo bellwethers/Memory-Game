@@ -119,30 +119,25 @@ function listen(selected_card) {
     }
 }
 
-
+var y = -1;
 //STAR MANAGER//
 function starStyle() {
-    for (var w = 0; w < starCount; w++) {
-        stars[w].style.filter = "none";
-    }
+
+  /*create a list of three stars then remove
+  if turns become too much remove
+  */
+  if (turn == 2 || turn == 4 || turn == 27) {
+      y++;
+      //change style to black
+      stars[y].style.filter = "brightness(0%)";
+      starCount--;
+  }
 }
 
-var y = -1;
-var starOut = [];
+
 function moveCount() {
     turn++;
-
-    /*create a list of three stars then remove
-    if turns become too much remove
-    */
-    if (turn == 10 || turn == 17 || turn == 27) {
-        y++;
-
-        stars[y].style.filter = "brightness(0%)";
-        //change style to black
-        starOut.push(y);
-        console.log(starOut.length);
-    }
+    starStyle();
 }
 
 //CARD MATCHES SECTION //
@@ -184,7 +179,8 @@ function reset_guess() {
 //WIN MESSAGE//
 function win_message() {
     if (matched.length == deck.length) {
-        alert("You win!! Your time score is: " + counter + " seconds and you have lost " + starOut.length + " stars! Would you like to play again?");
+        alert("You win!! Your time is: " + counter + " seconds and you have "
+         + starCount + " stars! \n Would you like to play again?");
     }
 }
 
