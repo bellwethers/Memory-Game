@@ -119,25 +119,32 @@ function listen(selected_card) {
     }
 }
 
-var y = -1;
+
 //STAR MANAGER//
 function starStyle() {
-
-  /*create a list of three stars then remove
-  if turns become too much remove
-  */
-  if (turn == 2 || turn == 4 || turn == 27) {
-      y++;
-      //change style to black
-      stars[y].style.filter = "brightness(0%)";
-      starCount--;
-  }
+    starNumb = 3;
+    for (var w = 0; w < starCount; w++) {
+        stars[w].style.filter = "none";
+    }
 }
 
-
+var y = -1;
+var starNumb = 3;
 function moveCount() {
     turn++;
-    starStyle();
+
+    /*create a list of three stars then remove
+    if turns become too much remove
+    */
+    if (turn == 24 || turn == 24 ) {
+        y++;
+
+        stars[y].style.filter = "brightness(0%)";
+        //change style to black
+
+        starNumb--;
+        console.log(starNumb);
+    }
 }
 
 //CARD MATCHES SECTION //
@@ -180,7 +187,7 @@ function reset_guess() {
 function win_message() {
     if (matched.length == deck.length) {
         alert("You win!! Your time is: " + counter + " seconds and you have "
-         + starCount + " stars! \n Would you like to play again?");
+         + starNumb + " stars! \n Would you like to play again?");
     }
 }
 
@@ -197,7 +204,6 @@ function restart() {
     y = -1;
     starStyle();
     matched = [];
-    starOut = [];
     $("#cardCanvas tr").remove();
     createBoard();
     $("td img").removeClass(matched);
