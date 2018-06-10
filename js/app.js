@@ -136,7 +136,7 @@ function moveCount() {
     /*create a list of three stars then remove
     if turns become too much remove
     */
-    if (turn == 24 || turn == 24 ) {
+    if (turn == 8 || turn == 14 ) {
         y++;
 
         stars[y].style.filter = "brightness(0%)";
