@@ -3,17 +3,16 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Dependencies](#Dependencies)
 * [Contributing](#contributing)
 
-## Instructions
+## Instructions for Game
+A memory game which requires the player to memorize flipped cards and find their match.
+The game begins as soon as you click your first card, and ends once you find its' match. A rating of stars will be given on completion of the game and a timer keeps time of the game.
 
-The starter project has some HTML and CSS styling to display a version of a Memory Game project.  Primarily the JavaScript file would need to be edited if needed.
-
-To get started, open `js/app.js` to edit my work.
-
-I tried to make the deck easy to edit and replace. You only need to have one of each card and clones will be made. Create a game board (table) which holds the cards in position.
-
+## Dependencies
+This game is dependent on jQuery and google fonts
 
 ## Contributing
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+To contribute clone this game and add changes or better functions.
